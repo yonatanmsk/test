@@ -68,27 +68,3 @@ async def process_table(file: UploadFile = File(...)):
 
     except Exception as e:
         raise HTTPException(status_code=500, detail="Failed to process table data")
-
-# def process_file(file_contents):
-#     try:
-#         print("File contents:", file_contents)
-#         df = pd.read_csv(file_contents)
-#         print("DataFrame:", df)
-#         processed_data = df.to_dict(orient='records')
-#         return {"processed_data": processed_data}
-#     except Exception as e:
-#         print("Error:", e)
-#         return {"error": "Failed to process the file"}
-
-# @app.post("/upload/")
-# async def upload_file(file: UploadFile = File(...)):
-#     try:
-#         # Read the bytes of the uploaded file
-#         contents = await file.read()
-#         # Convert bytes to DataFrame
-#         df = pd.read_csv(io.BytesIO(contents), encoding='utf-8')
-#         # Process the DataFrame
-#         processed_data = df.to_dict(orient='records')
-#         return {"processed_data": processed_data}
-#     except Exception as e:
-#         return {"error": "Failed to process the file"}
