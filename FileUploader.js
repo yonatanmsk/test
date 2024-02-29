@@ -32,6 +32,7 @@ const handleFileUpload = async (event) => {
     }
   };
 
+
 const readCSVFile = (file) => {
     console.log("3");
     const reader = new FileReader();
@@ -55,11 +56,22 @@ const readXLSXFile = (file) => {
     });
   };
 
+const sampleData = {
+key1: 'value1',
+key2: 'value2',
+key3: 123,
+key4: true
+};
+
+// Convert sample data to JSON string
+const sampleDataJson = JSON.stringify(sampleData);
+
 const sendFileDataToBackend = (fileContent) => {
-  console.log("1");
+  console.log("5");
   console.log(fileContent);
   const formData = new FormData();
-  formData.append('file', fileContent);
+  formData.append('sampleData', sampleDataJson);
+//   formData.append('file', fileContent);
     fetch('http://localhost:8090/process_table/', {
       method: 'POST',
       body: formData, // Send file data directly to the backend
